@@ -37,17 +37,17 @@ def convert(snippet , phrase ):
     param_names = []
 
     for i in range(0 , snippet.count("@@@")):
-        param_count = random.randint(1,3)
+        param_count = random.randint(1, 3)
         param_names.append(', '.join(random.sample(WORDS, param_count)))
 
-    for sentence in snippet , phrase:
+    for sentence in snippet, phrase:
         result = sentence[:]
 
         for word in class_names:
-            result = result.replace("%%%" , word , 1)
+            result = result.replace("%%%", word, 1)
 
         for word in other_names:
-            result = result.replace("***" , word , 1)
+            result = result.replace("***", word, 1)
 
         for word in param_names:
             result = result.replace("@@@", word , 1)
@@ -64,7 +64,7 @@ try:
         for snippet in snippets:
             phrase = PHRASES[snippet]
             question, answer = convert(snippet, phrase)
-            if PHRASE_FIRST :
+            if PHRASE_FIRST:
                 question, answer = answer, question
 
             print(question)
